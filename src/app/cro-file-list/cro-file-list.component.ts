@@ -14,11 +14,14 @@ import {ActivatedRoute} from "@angular/router";
 export class CroFileListComponent implements OnInit {
 
   croFiles: Data[] = [];
+  currentPage = 1;
+  pageSize = 10;
+  totalPages = 0;
   constructor(private route: ActivatedRoute,private listService: ListServiceService, private http:HttpClient) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const filename = params.get('filename'); // Récupérer le nom de fichier depuis l'URL
+      const filename = params.get('filename');
       if (filename) {
         this.listService.getList(filename).subscribe(response => {
           this.croFiles = response;
@@ -41,7 +44,7 @@ export class CroFileListComponent implements OnInit {
     );
   }
   downloadExcel(): void {
-    const excelUrl = 'http://localhost:8081/cro-files/downloadExcel/022.000.001.031.MAD'; // Mettez à jour l'URL avec les bons paramètres
+    const excelUrl = 'http://localhost:8081/cro-files/downloadExcel/022.000.001.031.MAD';
     const filename = 'data.xlsx';
 
     this.http.get(excelUrl, { responseType: 'arraybuffer' }).subscribe(
@@ -54,5 +57,22 @@ export class CroFileListComponent implements OnInit {
       }
     );
   }
-
+  triggerCleanup() {
+    this.http.get('http://localhost:8081/cro-files/triggerCleanup').subscribe(
+      (response) => {
+        console.log('Nettoyage déclenché :', response);
+      },
+      (error) => {
+        console.error('Erreur lors du déclenchement du nettoyage :', error);
+      }
+    );
+  }
 }
+
+
+
+
+
+
+
+
