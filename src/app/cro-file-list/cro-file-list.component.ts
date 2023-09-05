@@ -20,15 +20,17 @@ export class CroFileListComponent implements OnInit {
   constructor(private route: ActivatedRoute,private listService: ListServiceService, private http:HttpClient) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const filename = params.get('filename');
-      if (filename) {
-        this.listService.getList(filename).subscribe(response => {
-          this.croFiles = response;
-        });
-      }
+  this.list();
+  }
+  list() : void{
+  this.route.paramMap.subscribe(params => {
+  const filename = params.get('filename');
+  if (filename) {
+    this.listService.getList(filename).subscribe(response => {
+      this.croFiles = response;
     });
   }
+});}
   downloadPdf(): void {
     const pdfUrl = 'http://localhost:8081/cro-files/generate-pdf/022.000.001.031.MAD?page=1&pageSize=10';
     const filename = 'data.pdf';
