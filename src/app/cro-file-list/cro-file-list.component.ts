@@ -30,7 +30,8 @@ export class CroFileListComponent implements OnInit {
       this.croFiles = response;
     });
   }
-});}
+});
+  }
   downloadPdf(): void {
     const pdfUrl = 'http://localhost:8081/cro-files/generate-pdf/022.000.001.031.MAD?page=1&pageSize=10';
     const filename = 'data.pdf';

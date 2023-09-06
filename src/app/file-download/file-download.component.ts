@@ -20,6 +20,9 @@ export class FileDownloadComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+  this.getList();
+  }
+  getList():void {
     this.http.get<string[]>(this.API+`022.000.001.031.MAD?page=${this.currentPage}&pageSize=${this.pageSize}`).subscribe(
       (response) => {
         this.data = response;
