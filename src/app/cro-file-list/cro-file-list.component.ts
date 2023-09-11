@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Data} from "../interface/data";
 import {ListServiceService} from "../service/list-service.service";
 import {HttpClient} from "@angular/common/http";
-import {saveAs} from "file-saver";
+import { saveAs } from 'file-saver-es';
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -14,6 +14,7 @@ import {ActivatedRoute} from "@angular/router";
 export class CroFileListComponent implements OnInit {
 
   croFiles: Data[] = [];
+  API='http://localhost:8081/cro-files/generate-pdf/';
   currentPage = 1;
   pageSize = 10;
   totalPages = 0;
