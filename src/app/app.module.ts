@@ -4,8 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {CroFileListModule} from "./cro-file-list/cro-file-list.module";
-import {FileDownloadModule} from "./file-download/file-download.module";
+import {CroFileListModule} from "./module/cro-file-list.module";
 
 
 
@@ -21,7 +20,6 @@ import {FileDownloadModule} from "./file-download/file-download.module";
     HttpClientModule,
     FormsModule,
     CroFileListModule,
-    FileDownloadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
