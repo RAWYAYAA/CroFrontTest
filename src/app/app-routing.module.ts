@@ -14,7 +14,7 @@ const routes: Routes = [
     },
       {
       path:'list',
-      loadChildren: './cro-file-front/cro-file-front.module.#CroFileFrontModule',
+      loadChildren: ()=> import('./cro-file-front/cro-file-front.module').then(m=>m.CroFileFrontModule)
     }
     ]
   }
