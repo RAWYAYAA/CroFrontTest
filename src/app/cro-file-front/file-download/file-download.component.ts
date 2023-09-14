@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { saveAs } from 'file-saver';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {saveAs} from "file-saver";
+
 @Component({
   selector: 'app-file-download',
   templateUrl: './file-download.component.html',
@@ -16,7 +17,7 @@ export class FileDownloadComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-  this.getList();
+    this.getList();
   }
   getList():void {
     this.http.get<string[]>(this.API+`022.000.001.031.MAD?page=${this.currentPage}&pageSize=${this.pageSize}`).subscribe(

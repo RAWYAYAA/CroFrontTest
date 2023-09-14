@@ -4,11 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {CroFileListModule} from "./module/cro-file-list.module";
-
-
-
-
+import {RouterModule} from "@angular/router";
+import {CroFileFrontModule} from "./cro-file-front/cro-file-front.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +16,7 @@ import {CroFileListModule} from "./module/cro-file-list.module";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CroFileListModule,
+    CroFileFrontModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

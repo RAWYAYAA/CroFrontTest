@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Data} from "../interface/data";
-import {ListServiceService} from "../service/list-service.service";
-import {HttpClient} from "@angular/common/http";
-import { saveAs } from 'file-saver-es';
+import {Component, OnInit} from '@angular/core';
+import {Data} from "../../interface/data";
 import {ActivatedRoute} from "@angular/router";
-
+import {ListServiceService} from "../../service/list-service.service";
+import {HttpClient} from "@angular/common/http";
+import {saveAs} from "file-saver-es";
 
 @Component({
   selector: 'app-cro-file-list',
@@ -21,17 +20,17 @@ export class CroFileListComponent implements OnInit {
   constructor(private route: ActivatedRoute,private listService: ListServiceService, private http:HttpClient) {}
 
   ngOnInit() {
-  this.list();
+    this.list();
   }
   list() : void{
-  this.route.paramMap.subscribe(params => {
-  const filename = params.get('filename');
-  if (filename) {
-    this.listService.getList(filename).subscribe(response => {
-      this.croFiles = response;
+    this.route.paramMap.subscribe(params => {
+      const filename = params.get('filename');
+      if (filename) {
+        this.listService.getList(filename).subscribe(response => {
+          this.croFiles = response;
+        });
+      }
     });
-  }
-});
   }
   downloadPdf(): void {
     const pdfUrl = 'http://localhost:8081/cro-files/generate-pdf/022.000.001.031.MAD?page=1&pageSize=10';
@@ -72,11 +71,4 @@ export class CroFileListComponent implements OnInit {
     );
   }
 }
-
-
-
-
-
-
-
 
