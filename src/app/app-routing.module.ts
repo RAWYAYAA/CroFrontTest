@@ -9,13 +9,18 @@ const routes: Routes = [
     component:CroFileListComponent,
     children: [{
       path:'',
-      redirectTo:'listFileCro',
+      redirectTo:'list',
       pathMatch:'full'
     },
       {
       path:'list',
       loadChildren: ()=> import('./cro-file-front/cro-file-front.module').then(m=>m.CroFileFrontModule)
-    }
+    },
+      {
+        path:'Download',
+        component:FileDownloadComponent,
+        loadChildren:()=>import('./cro-file-front/cro-file-front.module').then(d=>d.CroFileFrontModule)
+      }
     ]
   }
 ];
